@@ -5,13 +5,10 @@ using System.IO;
 
 class Program {
     static void Main(string[] args) {
+
+        Tasks.LoadTasks();
         while (Variables.InTodoApp) {
 
-            Tasks.LoadTasks();
-
-            Thread.Sleep(300);
-
-            Tasks.SaveTasks();
             Console.Clear();
             Tasks.PrintAllTasks();
 
@@ -22,15 +19,18 @@ class Program {
 
                 case "1": 
                     Tasks.AddTask();
+            Tasks.SaveTasks();
                     break;
                 case "2":
                     Tasks.RemoveTask();
+            Tasks.SaveTasks();
                     break;
                 case "3":
                     Variables.InTodoApp = false;
                     break;
                 default:
                     Console.WriteLine("Invalid input!");
+                    Thread.Sleep(250);
                     break;
             }
 
