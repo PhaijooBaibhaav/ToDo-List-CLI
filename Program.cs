@@ -7,7 +7,10 @@ class Program {
     static void Main(string[] args) {
         while (Variables.InTodoApp) {
 
+            Tasks.LoadTasks();
+
             Thread.Sleep(300);
+
             Tasks.SaveTasks();
             Console.Clear();
             Tasks.PrintAllTasks();
@@ -93,6 +96,12 @@ public class Tasks {
 
     public static void SaveTasks() {
         File.WriteAllLines("tasks.txt", Variables.ToDo);
+    }
+
+    public static void LoadTasks() {
+        if (File.Exists("tasks.txt")) {
+            Variables.ToDo = new List<string>(File.ReadAllLines("tasks.txt"));
+        }
     }
 
 }
