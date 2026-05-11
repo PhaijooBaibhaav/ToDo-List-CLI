@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Threading;
 using System.Collections.Generic;
+using System.IO;
 
 class Program {
     static void Main(string[] args) {
         while (Variables.InTodoApp) {
 
             Thread.Sleep(300);
+            Tasks.SaveTasks();
             Console.Clear();
-            Methods.PrintAllTasks();
+            Tasks.PrintAllTasks();
 
             Console.WriteLine("Write the operation to do\n 1:Add task 2:Remove task 3:Exit"); 
             Variables.choose = Console.ReadLine();
@@ -16,10 +18,10 @@ class Program {
             switch (Variables.choose) {
 
                 case "1": 
-                    Methods.AddTask();
+                    Tasks.AddTask();
                     break;
                 case "2":
-                    Methods.RemoveTask();
+                    Tasks.RemoveTask();
                     break;
                 case "3":
                     Variables.InTodoApp = false;
@@ -40,7 +42,7 @@ public class Variables {
     public static bool InTodoApp = true;
 }
 
-public class Methods {
+public class Tasks {
     public static void AddTask() {
         Console.WriteLine("Write a task: "); 
         string task = Console.ReadLine();
@@ -87,8 +89,14 @@ public class Methods {
         for (int i = 0; i < Variables.ToDo.Count; i++) {
             Console.WriteLine($"[{i}] | {Variables.ToDo[i]}"); 
         }
-
     }
+
+    public static void SaveTasks() {
+        File.WriteAllLines("tasks.txt", Variables.ToDo);
+    }
+
 }
+
+
 
 
