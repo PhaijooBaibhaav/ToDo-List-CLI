@@ -13,7 +13,7 @@ You can add tasks.
 You can choose to remove all the tasks or specific tasks. 
 #
 ![screenshot3](assets/screenshots/RemoveSpecificTasks.png)
-You can input id of the tasks that you want to remove which is the number in the large brackets ([]).
+You can input id of the tasks that you want to remove which is the number in the large brackets ([ ]) alongside the task you want to remove.
 # 
 
 ## Requirements
